@@ -1,6 +1,6 @@
 # Vertex AI SDK Comparison
 
-This project compares Google Vertex AI SDK with Langdoc's Vertex SDK using TypeScript and ES modules.
+This project compares Google Vertex AI SDK with LangChain's Vertex SDK using TypeScript and ES modules.
 
 ## Setup
 
@@ -9,28 +9,33 @@ This project compares Google Vertex AI SDK with Langdoc's Vertex SDK using TypeS
 npm install
 ```
 
-2. Create a `.env` file in the root directory with your Google API key:
+2. Create a `.env` file in the root directory with your API keys:
 ```
-GOOGLE_API_KEY=your-api-key-here
-GOOGLE_PROJECT_ID=your-project-id (optional)
-GOOGLE_REGION=us-central1 (optional)
+GOOGLE_API_KEY=your-google-api-key-here
+GOOGLE_LANGCHAIN_API_KEY=your-google-langchain-api-key-here
 ```
 
-3. Add your prompts:
+Both API keys are required.
+
+3. Add your prompts (optional):
    - Edit `system-instructions.md` with your system instructions
    - Edit `user-input.md` with your user input/prompt
 
-## Running
+## Running Tests
 
-Build and run:
+Run the test suite with Vitest:
 ```bash
-npm run build
-npm start
+npm test
 ```
 
-Or run directly with tsx:
+Or run the test file directly:
 ```bash
-npm run dev
+npx vitest src/index.test.ts
 ```
+
+The tests will:
+- Run both SDK calls in parallel
+- Save results to `results/genai.json` and `results/langchain.json`
+- Check that the duration difference is within 8 seconds
 
 
